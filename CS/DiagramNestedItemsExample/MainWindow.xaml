@@ -16,11 +16,7 @@
         <local:DiagramItemTemplateSelector x:Key="diagramItemTemplateSelector">
             <local:DiagramItemTemplateSelector.DepartmentTemplate>
                 <DataTemplate>
-                    <dxdiag:DiagramContainer CanCollapse="True" CanResize="False" Width="120" ItemsCanMove="False" ShowHeader="True" Header="{Binding DepartmentName}" ItemsCanSelect="False" DragMode="ByAnyPoint" CanAttachConnectorEndPoint="False" CanAttachConnectorBeginPoint="False">
-                        <dxmvvm:Interaction.Behaviors>
-                            <local:StackLayoutDiagramContainerBehavior/>
-                        </dxmvvm:Interaction.Behaviors>
-                    </dxdiag:DiagramContainer>
+                    <dxdiag:DiagramList CanCollapse="True"  Height="120" Width="120" ItemsCanMove="False" ShowHeader="True" Header="{Binding DepartmentName}" ItemsCanSelect="False" DragMode="ByAnyPoint" CanAttachConnectorEndPoint="False" CanAttachConnectorBeginPoint="False"/>
                 </DataTemplate>
             </local:DiagramItemTemplateSelector.DepartmentTemplate>
             <local:DiagramItemTemplateSelector.EmployeeTemplate>
