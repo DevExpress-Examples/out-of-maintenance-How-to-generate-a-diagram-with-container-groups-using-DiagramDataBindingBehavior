@@ -1,4 +1,4 @@
 # How to generate a diagram with container groups using DiagramDataBindingBehavior
 
 Bind [DiagramDataBindingBehavior.ItemsSource](https://documentation.devexpress.com/WPF/DevExpress.Xpf.Diagram.DiagramDataBindingBehaviorBase.ItemsSource.property) to a collection with root items and specify the child collection name using the [ItemsPath](https://documentation.devexpress.com/WPF/DevExpress.Xpf.Diagram.DiagramDataBindingBehaviorBase.ItemsPath.property) property. To select different keys for parent and child items, use [KeySelector](https://documentation.devexpress.com/WPF/DevExpress.Xpf.Diagram.DiagramDataBindingBehaviorBase.KeySelector.property). 
-Note that [DiagramContainers](https://documentation.devexpress.com/WPF/117205/Controls-and-Libraries/Diagram-Control/Diagram-Items/Containers) don't automatically arrange their children, so it's necessary to implement this functionality on your own. In this example, child items are arranged in the *StackLayoutDiagramContainerBehavior* class.
+To arrange items one by one, use the [DiagramList](https://docs.devexpress.com/WPF/DevExpress.Xpf.Diagram.DiagramList) element. 
