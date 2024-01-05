@@ -1,0 +1,94 @@
+<Window
+    x:Class="DiagramNestedItemsExample.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:dxdiag="http://schemas.devexpress.com/winfx/2008/xaml/diagram"
+    xmlns:dxmvvm="http://schemas.devexpress.com/winfx/2008/xaml/mvvm"
+    xmlns:local="clr-namespace:DiagramNestedItemsExample"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="1000"
+    Height="900"
+    mc:Ignorable="d">
+    <Window.DataContext>
+        <local:ViewModel />
+    </Window.DataContext>
+    <Window.Resources>
+        <local:KeySelector x:Key="keySelector" />
+        <local:ItemsSelector x:Key="itemsSelector"/>
+
+        <local:DiagramItemTemplateSelector x:Key="diagramItemTemplateSelector">
+            <local:DiagramItemTemplateSelector.DepartmentTemplate>
+                <DataTemplate>
+                    <dxdiag:DiagramList
+                        MinWidth="240"
+                        CanAddItems="False"
+                        CanAttachConnectorBeginPoint="False"
+                        CanAttachConnectorEndPoint="False"
+                        CanCollapse="True"
+                        DragMode="ByAnyPoint"
+                        Header="{Binding DepartmentName}"
+                        ItemsCanMove="False"
+                        ItemsCanSelect="True"
+                        ShowHeader="True" />
+                </DataTemplate>
+            </local:DiagramItemTemplateSelector.DepartmentTemplate>
+
+            <local:DiagramItemTemplateSelector.SectionTemplate>
+                <DataTemplate>
+                    <dxdiag:DiagramList
+                        Orientation="Horizontal"
+                        CanAttachConnectorBeginPoint="False"
+                        CanAttachConnectorEndPoint="False"
+                        CanCollapse="False"
+                        DragMode="ByAnyPoint"
+                        Header="{Binding SectionName}"
+                        ItemsCanMove="False"
+                        ItemsCanSelect="True"
+                        ShowHeader="True" />
+                </DataTemplate>
+            </local:DiagramItemTemplateSelector.SectionTemplate>
+
+            <local:DiagramItemTemplateSelector.EmployeeTemplate>
+                <DataTemplate>
+                    <dxdiag:DiagramShape
+                        MinHeight="50"
+                        Background="Green"
+                        ConnectionPoints="0,0.5 1,0.5"
+                        Content="{Binding EmployeeName}" />
+                </DataTemplate>
+            </local:DiagramItemTemplateSelector.EmployeeTemplate>
+        </local:DiagramItemTemplateSelector>
+        <DataTemplate x:Key="connectorTemplate">
+            <dxdiag:DiagramConnector
+                BeginPointRestrictions="KeepConnected"
+                CanEdit="False"
+                EndPointRestrictions="KeepConnected" />
+        </DataTemplate>
+    </Window.Resources>
+    <Grid>
+        <dxdiag:DiagramDesignerControl
+            x:Name="diagramControl1"
+            ConnectorsSeparationMode="AllLines"
+            SelectedStencils="BasicShapes, BasicFlowchartShapes"
+            SugiyamaLayoutColumnSpacing="300"
+            SugiyamaLayoutDirection="LeftToRight"
+            SugiyamaLayoutLayerSpacing="400"
+            SugiyamaLayoutLayersAlignment="Center">
+            <dxmvvm:Interaction.Behaviors>
+                <dxdiag:DiagramDataBindingBehavior
+                    ConnectorFromMember="FromEmployeeID"
+                    ConnectorTemplate="{StaticResource connectorTemplate}"
+                    ConnectorToMember="ToEmployeeID"
+                    ConnectorsSource="{Binding Relations}"
+                    ItemTemplateSelector="{StaticResource diagramItemTemplateSelector}"
+                    ItemsSelector="{StaticResource itemsSelector}"
+                    ItemsSource="{Binding Departments}"
+                    KeySelector="{StaticResource keySelector}"
+                    DiagramItemAdding="DiagramDataBindingBehavior_DiagramItemAdding"
+                    LayoutKind="Sugiyama" />
+            </dxmvvm:Interaction.Behaviors>
+        </dxdiag:DiagramDesignerControl>
+    </Grid>
+</Window>
