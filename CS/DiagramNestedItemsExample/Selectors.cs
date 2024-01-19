@@ -27,19 +27,9 @@ namespace DiagramNestedItemsExample {
     }
 
     public class DiagramItemTemplateSelector : DataTemplateSelector {
-        public DataTemplate DepartmentTemplate {
-            get;
-            set;
-        }
-        public DataTemplate SectionTemplate
-        {
-            get;
-            set;
-        }
-        public DataTemplate EmployeeTemplate {
-            get;
-            set;
-        }
+        public DataTemplate DepartmentTemplate { get; set; }
+        public DataTemplate SectionTemplate { get; set; }
+        public DataTemplate EmployeeTemplate { get; set; }
         public override DataTemplate SelectTemplate(object item, DependencyObject container) {
             if (item is Department)
                 return DepartmentTemplate;

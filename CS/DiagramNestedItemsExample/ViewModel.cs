@@ -3,14 +3,8 @@ using System.Collections.ObjectModel;
 
 namespace DiagramNestedItemsExample {
     public class ViewModel {
-        public ObservableCollection<Department> Departments {
-            get;
-            set;
-        }
-        public ObservableCollection<Relation> Relations {
-            get;
-            set;
-        }
+        public ObservableCollection<Department> Departments { get; set; }
+        public ObservableCollection<Relation> Relations { get; set; }
         public ViewModel() {
             Departments = new ObservableCollection<Department>();
             var dep1 = new Department() { DepartmentID = 1, DepartmentName = "Provision", Sections = new ObservableCollection<Section>() };
@@ -76,20 +70,16 @@ namespace DiagramNestedItemsExample {
         }
     }
 
-    public class Section : BindableBase
-    {
-        public int SectionID
-        {
+    public class Section : BindableBase {
+        public int SectionID {
             get { return GetProperty(() => SectionID); }
             set { SetProperty(() => SectionID, value); }
         }
-        public string SectionName
-        {
+        public string SectionName {
             get { return GetProperty(() => SectionName); }
             set { SetProperty(() => SectionName, value); }
         }
-        public ObservableCollection<Employee> Employees
-        {
+        public ObservableCollection<Employee> Employees {
             get { return GetProperty(() => Employees); }
             set { SetProperty(() => Employees, value); }
         }
