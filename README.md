@@ -19,7 +19,7 @@ The `DiagramDataBindingBehavior` allows you to generate a diagram with multiple 
 ## Files to Review
 
 - [MainWindow.xaml](./CS/DiagramNestedItemsExample/MainWindow.xaml)
-- [MainWindow.cs](./CS/DiagramNestedItemsExample/MainWindow.xaml.cs) (VB: [Form1.vb](./VB/DiagramNestedItemsExample/MainWindow.xaml.vb))
+- [MainWindow.xaml.cs](./CS/DiagramNestedItemsExample/MainWindow.xaml.cs) (VB: [MainWindow.xaml.vb](./VB/DiagramNestedItemsExample/MainWindow.xaml.vb))
 
 ## Documentation
 
